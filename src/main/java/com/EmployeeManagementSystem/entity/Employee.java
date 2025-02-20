@@ -16,14 +16,14 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonProperty
-    private int employeeID;
+    private int employeeId;
 
     @JsonProperty
     @NotBlank
     private String employeeName;
 
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
     @JsonProperty
@@ -35,7 +35,6 @@ public class Employee {
     private String employeeDesignation;
 
     @JsonProperty
-    @NotBlank
     private Long employeeSalary;
 
 
@@ -43,13 +42,13 @@ public class Employee {
     @JsonProperty
     private Department employeeDepartment;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JsonProperty
     private List<Project> projectList;
 
 
-    public int getEmployeeID() {
-        return employeeID;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
     public String getEmployeeName() {

@@ -6,8 +6,9 @@ import com.EmployeeManagementSystem.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path="/ems" , consumes = "application/json", produces = "application/json")
@@ -38,6 +39,12 @@ public class EmployeeController {
     @PutMapping(value="/employees")
     public Employee updateEmployee(@RequestBody Employee e){
     return  employeeService.updateEmployee(e);
+    }
+
+    @GetMapping(value="/employeesWithoutProject")
+    public ResponseEntity<List<Employee>> getEmployeeWithoutProjects(){
+        List<Employee> empList= employeeService.getEmployeeListWithoutProjects();
+        return new ResponseEntity<>(empList,HttpStatus.OK);
     }
 
 

@@ -47,6 +47,5 @@ public class DepartmentService {
             }
         }
         return sum;
-
     }
 }
